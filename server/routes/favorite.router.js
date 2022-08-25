@@ -5,7 +5,16 @@ const router = express.Router();
 
 // return all favorite images
 router.get('/', (req, res) => {
-  res.sendStatus(200);
+  console.log('hi')
+  const queryText = 'SELECT * FROM "image";';
+  pool.query(queryText).then(result => {
+    console.log(result.rows)
+    res.send(result.rows)
+  }).catch(err => {
+    console.error(err)
+    res.sendStatus(500)
+  })
+  // res.sendStatus(200);
 });
 
 

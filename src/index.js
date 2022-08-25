@@ -5,7 +5,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
-import { takeEvery, put, take } from 'redux-saga/effects'
+import { takeEvery, put } from 'redux-saga/effects'
 import axios from 'axios'
 
 const sagaMiddleware = createSagaMiddleware();
@@ -19,7 +19,7 @@ const giphyItems = (state = [], action) => {
       return state;
   }
 };
-
+// let giphyFavs = {[1,2,3,4,5]}
 // This reducer is holding the favorite items from the Database.
 const giphyFavs = (state = [], action) => {
   switch (action.type) {
@@ -32,8 +32,10 @@ const giphyFavs = (state = [], action) => {
 
 // Getting GIFs from the Database and sending it to the reducer: giphyItems, so that it's accessible.
 function* getGIF(){
+  console.log('yolo')
   try{
     let response = yield axios.get('/api/favorite');
+    
     yield put({
       type: 'HOLD_FAVS',
       payload: response.data
