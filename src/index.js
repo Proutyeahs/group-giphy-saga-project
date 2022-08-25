@@ -10,13 +10,63 @@ import axios from 'axios'
 
 const sagaMiddleware = createSagaMiddleware();
 
+// This reducer is getting items from the API and saving them into an array.
+const giphyItems = (state = [], action) => {
+  switch (action.type) {
+    case 'GIPHY_LIST':
+      return action.payload.data
+    default:
+      return state;
+  }
+};
+
+// This reducer is holding the favorite items from the Database.
+const giphyFavs = (state = [], action) => {
+  switch (action.type) {
+    case 'HOLD_FAVS':
+      return action.payload
+    default:
+      return state
+  }
+};
+
+// Getting GIFs from the Database and sending it to the reducer: giphyItems, so that it's accessible.
+function* getGIF(){
+  try{
+    let response = yield axios.get('/api/favorite');
+    yield put({
+      type: 'HOLD_FAVS',
+      payload: response.data
+    })
+  } catch (err) {
+    console.log('Err on GET', err)
+  }
+}
+
+// Posting GIFs to the Database on the button click from the GalleryList. 
+// Type: This will call the GET function to render on the DOM to up
+function* postGIF(action){
+  try {
+    yield axios.post('/api/favorite', action.payload)
+    yield put({
+      type: 'GET_GIF'
+    })
+  } catch (err) {
+    console.log('Err on POST', err);
+  }
+}
+
+// yield is looking for every command with 'POST_GIF' or 'GET_GIF' and then running the respective function that is tied to it.
 function* rootSaga() {
-    
+  yield takeEvery('POST_GIF', postGIF)
+  yield takeEvery('GET_GIF', getGIF)
   }
 
+// This sends the reducer arrays (giphyItems and giphyFavs) to the store and makes it accessible to other components.
 const store = createStore(
     combineReducers({
-        
+        giphyItems,
+        giphyFavs
     }),
     applyMiddleware(sagaMiddleware, logger),
   );
