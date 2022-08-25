@@ -1,4 +1,5 @@
 import React from 'react';
+import Search from '../Search/Search';
 
 function App(props) {
   return (
