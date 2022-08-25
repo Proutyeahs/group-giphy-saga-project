@@ -8,7 +8,7 @@ CREATE TABLE "image" (
     "id" SERIAL PRIMARY KEY,
     "url" VARCHAR (1000) NOT NULL,
     "category_id" INT REFERENCES "category"
-)
+);
 
 CREATE TABLE "category" (
     "id" SERIAL PRIMARY KEY,
