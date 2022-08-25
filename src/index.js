@@ -14,6 +14,7 @@ const sagaMiddleware = createSagaMiddleware();
 const giphyItems = (state = [], action) => {
   switch (action.type) {
     case 'GIPHY_LIST':
+        console.log(action.payload)
       return action.payload.data
     default:
       return state;

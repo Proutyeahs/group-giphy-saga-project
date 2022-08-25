@@ -9,7 +9,6 @@ function App(props) {
   return (
     <div>
       <Header />
-      <h1>Giphy Search!</h1>
       <Search />
       <Favorites />
       <GalleryList />

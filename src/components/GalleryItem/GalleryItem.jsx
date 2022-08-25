@@ -1,7 +1,10 @@
-function GalleryItem() {
+function GalleryItem({imgURL}) {
     return (
-        <>
-        </>
+        <div>
+            <img src={imgURL} />
+
+            <button>Favorite</button>
+        </div>
     )
 }
 
