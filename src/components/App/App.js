@@ -1,4 +1,5 @@
 import React from 'react';
+import GalleryList from '../GalleryList/GalleryList';
 
 function App(props) {
   return (
