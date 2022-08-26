@@ -17,4 +17,25 @@ router.get('/', (req, res) => {
     });
 });
 
+router.put('/:id', (req, res) => {
+  const id = req.params.id;
+  const text = req.body
+  console.log('OUR DATA!', id, text);
+  const queryText = `UPDATE "image"
+  SET category_id = ${req.body.category}
+  WHERE id = ${id};`;
+
+  pool.query (queryText)
+  .then (response => {
+    console.log(response);
+    res.sendStatus(200)
+  })
+  .catch(err => {
+    console.log(err);
+    res.sendStatus(500)
+  })
+})
+
+
+
 module.exports = router;
