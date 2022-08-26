@@ -3,17 +3,30 @@ import GalleryList from '../GalleryList/GalleryList';
 import Favorites from '../Favorites/Favorites';
 import Search from '../Search/Search';
 import Header from '../Header/Header';
+
 import './App.css'
+
+
+import { HashRouter as Router, Route } from "react-router-dom";
 
 
 function App(props) {
   return (
-    <div>
-      <Header />
-      <Search />
-      <Favorites />
-      <GalleryList />
-    </div>
+    <Router>
+      <div>
+        <Header />
+
+        <Route path="/" exact>
+          <Search />
+          <GalleryList />
+        </Route>
+
+        <Route path="/favorites">
+          <Favorites />
+        </Route>
+
+      </div>
+    </Router>
   );
 }
 
