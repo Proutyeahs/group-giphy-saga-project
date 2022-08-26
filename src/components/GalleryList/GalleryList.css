@@ -10,8 +10,6 @@ img {
     width: 350px;
     margin: 26px;
     text-align: center;
-    
-    
 }
 
 .listDiv {
@@ -25,3 +23,9 @@ button {
     margin-top: 5px;    
 }
 
+body {
+    background-image: url("https://hdwallpaperim.com/wp-content/uploads/2017/09/17/64398-minimalism-gradient.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+  }
