@@ -1,6 +1,5 @@
 .App {
     text-align: center;
-    background-color: black;
     color: #413F42;
     border-radius: 10px;
     min-height: 120px;
@@ -17,4 +16,5 @@
     padding-top: 15px;
     font-size: 70px;
     opacity: 1;
+
 }
