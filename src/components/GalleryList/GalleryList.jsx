@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import './GalleryList.css'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
+import Button from '@material-ui/core/Button';
 
 function GalleryList() {
 
@@ -26,7 +27,7 @@ function GalleryList() {
             return (
                 <div key={pic.images.original.url} className="imageDiv">
                 <img src={pic.images.original.url}/>
-                <button onClick={() => handleClick(pic.images.original.url)}>Favorite</button>
+                <Button variant="contained" color="secondary" onClick={() => handleClick(pic.images.original.url)}>Favorite</Button>
                 </div>
                 // <GalleryItem imageURL={pic.images.original.url}/>
             )

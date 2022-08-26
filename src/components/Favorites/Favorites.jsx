@@ -2,7 +2,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom";
 import FavoritesItem from "../FavoritesItem/FavoritesItem";
+import Button from '@material-ui/core/Button';
 import './Favorites.css'
+
 
 function Favorites() {
 
@@ -24,7 +26,7 @@ function Favorites() {
   return (
     <>
       <h1>Favorites</h1>
-      <span className="right"><button onClick={handleBack}>Back</button></span>
+      <span className="right"><Button variant="contained" color="secondary" onClick={handleBack}>Back</Button></span>
       <div className="listDiv">
         {giphyFavs.map(gif => (
           <div key={gif.id} className="imageDiv">
