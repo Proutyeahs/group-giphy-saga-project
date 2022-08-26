@@ -36,7 +36,6 @@ function* getGIF(){
   console.log('yolo')
   try{
     let response = yield axios.get('/api/favorite');
-    
     yield put({
       type: 'HOLD_FAVS',
       payload: response.data
@@ -59,10 +58,32 @@ function* postGIF(action){
   }
 }
 
+function* apiGET(action){
+  try{
+    let response = yield axios.get(`/api/gif/${action.payload}`);
+    yield put({
+      type: 'GIPHY_LIST',
+      payload: response.data
+    })
+  } catch (err) {
+    console.log('ERR on apiGET', err)
+  }
+}
+
+// axios.get(`/api/gif/${searchWord}`)
+//         .then (response => {
+//             console.log('RESPONSE IS: ', response.data);
+//             dispatch ({
+//                 type: 'GIPHY_LIST',
+//                 payload: response.data
+//             })
+//         })
+
 // yield is looking for every command with 'POST_GIF' or 'GET_GIF' and then running the respective function that is tied to it.
 function* rootSaga() {
   yield takeEvery('POST_GIF', postGIF)
   yield takeEvery('GET_GIF', getGIF)
+  yield takeEvery('API_GET', apiGET)
   }
 
 // This sends the reducer arrays (giphyItems and giphyFavs) to the store and makes it accessible to other components.

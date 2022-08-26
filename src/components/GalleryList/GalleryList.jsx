@@ -9,7 +9,7 @@ function GalleryList() {
         <div className="listDiv">
         {store.map(pic => {
             return (
-                <div className="imageDiv">
+                <div key={pic.images.original.url} className="imageDiv">
                 <img src={pic.images.original.url}/>
                 <button>Favorite</button>
                 </div>
