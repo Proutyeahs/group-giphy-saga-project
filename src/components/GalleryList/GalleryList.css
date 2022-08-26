@@ -1,0 +1,27 @@
+img {
+    width: 350px;
+    height: 300px;
+    box-shadow: 18px 15px 18px gray;
+    border: 3px solid black;
+}
+
+.imageDiv{
+    height: 300px;
+    width: 350px;
+    margin: 26px;
+    text-align: center;
+    
+    
+}
+
+.listDiv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    
+}
+
+button {
+    margin-top: 5px;    
+}
+
