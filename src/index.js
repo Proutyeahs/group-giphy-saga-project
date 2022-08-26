@@ -76,6 +76,8 @@ function* setCategory(action) {
   }
   catch {
 
+  }
+}
 
 function* deleteGIF(action){
   console.log(action.payload)
