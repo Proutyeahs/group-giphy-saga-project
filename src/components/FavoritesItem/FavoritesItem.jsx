@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux"
+import Button from '@material-ui/core/Button';
 
 function FavoritesItem({gif}) {
 
@@ -14,7 +15,7 @@ function FavoritesItem({gif}) {
     return(
         <>
             <img src={gif.url} />
-            <button onClick={() => remove(gif.id)}>Delete</button>
+            <Button variant="contained" color="secondary" onClick={() => remove(gif.id)}>Delete</Button>
         </>
     )
 }
