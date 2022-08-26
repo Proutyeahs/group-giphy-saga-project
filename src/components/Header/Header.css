@@ -1,6 +1,20 @@
 .App {
     text-align: center;
     background-color: black;
-    color: white;
+    color: #413F42;
+    border-radius: 10px;
+    min-height: 120px;
+    /* background-image: url("https://i.pinimg.com/originals/33/b8/db/33b8db1015f6c692d867966c0fa34584.gif");
+    opacity: 0.6; */
+    background-color: #F5EDDC;
+    box-shadow: 18px 15px 18px gray;
+    border: 3px solid black;
+    
+}
 
+.titleFont {
+    margin: 0px;
+    padding-top: 15px;
+    font-size: 70px;
+    opacity: 1;
 }

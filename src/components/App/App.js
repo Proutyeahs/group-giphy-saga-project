@@ -3,6 +3,7 @@ import GalleryList from '../GalleryList/GalleryList';
 import Favorites from '../Favorites/Favorites';
 import Search from '../Search/Search';
 import Header from '../Header/Header';
+import './App.css'
 
 
 function App(props) {
