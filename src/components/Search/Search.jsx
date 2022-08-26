@@ -13,14 +13,9 @@ function Search () {
     const handleSubmit = () => {
         console.log('in click');
         console.log(searchWord);
-
-        axios.get(`/api/gif/${searchWord}`)
-        .then (response => {
-            console.log('RESPONSE IS: ', response.data);
-            dispatch ({
-                type: 'GIPHY_LIST',
-                payload: response.data
-            })
+        dispatch({
+            type: 'API_GET',
+            payload: searchWord
         })
     }
 
