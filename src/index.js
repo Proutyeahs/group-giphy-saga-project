@@ -33,7 +33,6 @@ const giphyFavs = (state = [], action) => {
 
 // Getting GIFs from the Database and sending it to the reducer: giphyItems, so that it's accessible.
 function* getGIF(){
-  console.log('yolo')
   try{
     let response = yield axios.get('/api/favorite');
     yield put({
@@ -70,11 +69,23 @@ function* apiGET(action){
   }
 }
 
+
 function* setCategory(action) {
   try {
     yield axios.put(`/api/category/:${action.payload.id}`, action.payload.category)
   }
   catch {
+
+
+function* deleteGIF(action){
+  console.log(action.payload)
+  try {
+    yield axios.delete(`/api/favorite/${action.payload}`);
+    yield put({
+      type: 'GET_GIF'
+    })
+  } catch(err){
+    console.log('ERR IN deleteGIF', err);
 
   }
 }
@@ -85,6 +96,8 @@ function* rootSaga() {
   yield takeEvery('GET_GIF', getGIF)
   yield takeEvery('API_GET', apiGET)
   yield takeEvery ('SET_CAT', setCategory)
+  yield takeEvery('DELETE_GIF', deleteGIF)
+
   }
 
 // This sends the reducer arrays (giphyItems and giphyFavs) to the store and makes it accessible to other components.

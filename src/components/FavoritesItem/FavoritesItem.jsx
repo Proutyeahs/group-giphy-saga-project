@@ -1,4 +1,6 @@
+
 import { useDispatch } from 'react-redux'
+import Button from '@material-ui/core/Button';
 function FavoritesItem({ gif }) {
 
     const dispatch = useDispatch()
@@ -24,6 +26,26 @@ function FavoritesItem({ gif }) {
                 <option value="NSFW">NSFW</option>
                 <option value="Meme">Meme</option>
             </select>
+
+
+
+
+function FavoritesItem({gif}) {
+
+    const dispatch = useDispatch();
+
+    const remove = (id) => {
+        dispatch({
+            type: 'DELETE_GIF',
+            payload: id
+        })
+    }
+
+    return(
+        <>
+            <img src={gif.url} />
+            <Button variant="contained" color="secondary" onClick={() => remove(gif.id)}>Delete</Button>
+
         </>
     )
 }
