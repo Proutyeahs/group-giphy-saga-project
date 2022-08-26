@@ -21,7 +21,20 @@ router.get('/', (req, res) => {
 
 // add a new favorite
 router.post('/', (req, res) => {
-  res.sendStatus(200);
+  console.log('REQ IS ', req.body.url);
+  let queryText = `
+  INSERT INTO "image" ("url")
+  VALUES ($1)
+  ;`;
+
+  pool.query(queryText, [req.body.url])
+  .then(response => {
+    res.sendStatus(200)
+  })
+  .catch (err => {
+    res.sendStatus(500)
+  })
+  
 });
 
 // update given favorite with a category id
