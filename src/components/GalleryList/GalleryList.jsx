@@ -2,18 +2,21 @@ import GalleryItem from "../GalleryItem/GalleryItem";
 import { useSelector } from 'react-redux'
 import './GalleryList.css'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
 
 function GalleryList() {
 
+    const dispatch = useDispatch()
 
     const handleClick = (url) => {
         console.log('in click');
         console.log(url);
 
-        axios.post('/api/favorite', {url: url} )
-        .then (response => {
-            console.log(response);
+        dispatch ({
+            type: 'POST_GIF',
+            payload: url
         })
+       
     }
 
     const store = useSelector(store => store.giphyItems)

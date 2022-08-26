@@ -50,7 +50,7 @@ function* getGIF(){
 // Type: This will call the GET function to render on the DOM to up
 function* postGIF(action){
   try {
-    yield axios.post('/api/favorite', action.payload)
+    yield axios.post('/api/favorite', {url: action.payload})
     yield put({
       type: 'GET_GIF'
     })
